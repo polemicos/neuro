@@ -11,7 +11,7 @@ namespace neuro
         public List<Neuron> neurons { get; }
         public int neuronsCount => neurons?.Count ?? 0;
 
-        public Layer(List<Neuron> neurons, neuronType neuronType = neuronType.normal)
+        public Layer(List<Neuron> neurons, neuronType neuronType = neuronType.hidden)
         {
             this.neurons = neurons;
         }

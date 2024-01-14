@@ -13,7 +13,7 @@ namespace neuro
         public double output { get; private set; }
         
 
-        public Neuron(int inCount, neuronType neuronType = neuronType.normal)
+        public Neuron(int inCount, neuronType neuronType = neuronType.hidden)
         {
             this.neuronType = neuronType;
             weights = new List<double>();
@@ -32,8 +32,11 @@ namespace neuro
             {
                 sum += inputs[i] * weights[i];
             }
-
-            output = sigmoid(sum);
+            if (neuronType != neuronType.input)
+            {
+                output = sigmoid(sum);
+            }
+            else output = sum;
             return output;
         }
 
@@ -63,7 +66,7 @@ namespace neuro
     public enum neuronType
     {
         input = 0,
-        normal = 1,
+        hidden = 1,
         output = 2
     }
 }
