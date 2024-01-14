@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "neuro", "neuro.csproj", "{9439683D-A9A3-498F-BA20-E00B07BB98EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9439683D-A9A3-498F-BA20-E00B07BB98EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9439683D-A9A3-498F-BA20-E00B07BB98EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9439683D-A9A3-498F-BA20-E00B07BB98EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9439683D-A9A3-498F-BA20-E00B07BB98EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EEBBEE5E-285D-46B5-8517-EDFA7461A690}
+	EndGlobalSection
+EndGlobal
