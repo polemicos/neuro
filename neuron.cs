@@ -10,23 +10,42 @@ namespace neuro
     {
         public List<double> weights { get; }
         public neuronType neuronType { get; }
+        public List<double> inputs { get; }
         public double output { get; private set; }
+        public double delta { get; private set; }
+
         
 
         public Neuron(int inCount, neuronType neuronType = neuronType.hidden)
         {
             this.neuronType = neuronType;
             weights = new List<double>();
+            inputs = new List<double>();
+            randomWeights(inCount);
 
-            for(int i = 0; i < inCount; i++)
+        }
+
+        private void randomWeights(int inCount)
+        {
+
+            var rnd = new Random();
+            for (int i = 0; i < inCount; i++)
             {
-                weights.Add(1);
+                if(neuronType == neuronType.input)
+                {
+                    weights.Add(1);
+                }else weights.Add(rnd.NextDouble());
+                inputs.Add(0);
             }
-
         }
 
         public double feedForward(List<double> inputs) 
         {
+            for(int i=0; i < inputs.Count; i++)
+            {
+                this.inputs[i] = inputs[i];
+            }
+
             var sum = 0.0;
             for(int i=0; i< inputs.Count; i++)
             {
@@ -45,13 +64,22 @@ namespace neuro
             return 1.0 / (1.0 + Math.Pow(Math.E, -x));
         }
 
-
-        //потом удалить
-        public void setWeights(params double[] weights)
+        private double sigmoidDx(double x)
         {
-            for(int i = 0; i < weights.Length; i++)
+            return sigmoid(x) / (1 - sigmoid(x));
+        }
+
+
+        public void balance(double error, double rate)
+        {
+            if (neuronType == neuronType.input) return;
+
+            delta = error * sigmoidDx(output);
+
+            for(int i=0; i < weights.Count; i++)
             {
-                this.weights[i] = weights[i];
+                weights[i] = weights[i] - inputs[i] * delta * rate;
+
             }
         }
 

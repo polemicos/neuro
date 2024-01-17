@@ -10,11 +10,13 @@ namespace neuro
     {
         public int inputs { get; }
         public int outputs { get; }
+        public double learningRate { get; }
         public List<int> hidden { get; }
 
-        public Topology(int inputs, int outputs, params int[] layers) {
+        public Topology(int inputs, int outputs, double learningRate, params int[] layers) {
             this.inputs = inputs;
             this.outputs = outputs;
+            this.learningRate = learningRate;
             hidden = new List<int>();
             hidden.AddRange(layers);
         }

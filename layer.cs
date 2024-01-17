@@ -10,10 +10,12 @@ namespace neuro
     {
         public List<Neuron> neurons { get; }
         public int neuronsCount => neurons?.Count ?? 0;
+        public neuronType neuronType;
 
         public Layer(List<Neuron> neurons, neuronType neuronType = neuronType.hidden)
         {
             this.neurons = neurons;
+            this.neuronType = neuronType;
         }
 
         public List<double> getSignals()
@@ -24,6 +26,12 @@ namespace neuro
                 res.Add(neuron.output);
             }
             return res;
+        }
+
+
+        public override string ToString()
+        {
+            return neuronType.ToString();
         }
 
     }
