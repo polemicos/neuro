@@ -55,7 +55,7 @@ namespace neuro
                     for(int k=0; k<prevL.neuronsCount; k++)
                     {
                         var prevN = prevL.neurons[k];
-                        var err = prevN.weights[i] * prevN.delta;
+                        var err = prevN.weights[j] * prevN.delta;
                         neuron.balance(err, topology.learningRate);
                     }
                 }

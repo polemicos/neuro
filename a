@@ -1,0 +1,23 @@
+[33mcommit 0f85f0ff86b4abf54a4a545eeccbdba68805da82[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: polemicos <nikitarakovich61@gmail.com>
+Date:   Wed Jan 17 20:02:52 2024 +0100
+
+    middle JO
+
+[33mcommit 74803b9d5db9168777819a3ac432fe939dd08ec3[m
+Author: polemicos <nikitarakovich61@gmail.com>
+Date:   Sun Jan 14 19:53:17 2024 +0100
+
+    setup
+
+[33mcommit 1531b8100ad1913864e01aa3b67974b54d83fc91[m
+Author: polemicos <nikitarakovich61@gmail.com>
+Date:   Sun Jan 14 13:48:54 2024 +0100
+
+    Добавьте файлы проекта.
+
+[33mcommit 78883e831e66d5499bacb26f9ad17ed86af6f9b6[m
+Author: polemicos <nikitarakovich61@gmail.com>
+Date:   Sun Jan 14 13:48:52 2024 +0100
+
+    Добавьте GITIGNORE- и GITATTRIBUTES-файлы.
