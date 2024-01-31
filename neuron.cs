@@ -59,9 +59,9 @@ namespace neuro
             return output;
         }
 
-        private double sigmoid(double x)
+        public static double sigmoid(double x)
         {
-            return 1.0 / (1.0 + Math.Pow(Math.E, -x));
+            return 1.0 / (1.0 + Math.Exp(-x));
         }
 
         private double sigmoidDx(double x)

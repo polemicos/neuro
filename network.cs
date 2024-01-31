@@ -16,8 +16,8 @@ namespace neuro
             layers = new List<Layer>();
 
             mkInput();
-            mkOutput();
             mkHiddens();
+            mkOutput();
         }
 
         public Neuron feedForward(params double[] inputSignals)

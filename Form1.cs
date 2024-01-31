@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OxyPlot;
+using OxyPlot.Series;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,16 +21,17 @@ namespace neuro
         }
         private List<Tuple<double, double[]>> dataset;
 
-        private Graphics graphics;
+        //private Graphics graphics;
         private Topology topology;
         private Network network;
         private double difference;
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-            graphics = CreateGraphics();
-            graphics.DrawLine(Pens.Black, new Point(540, 0), new Point(540, 720));
-            graphics.DrawLine(Pens.Black, new Point(0, 360), new Point(1080, 360));
-        }
+        //private Plot plot;
+        //private void Form1_Paint(object sender, PaintEventArgs e)
+        //{
+        //    graphics = CreateGraphics();
+        //    graphics.DrawLine(Pens.Black, new Point(540, 0), new Point(540, 720));
+        //    graphics.DrawLine(Pens.Black, new Point(0, 360), new Point(1080, 360));
+        //}
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -46,17 +49,24 @@ namespace neuro
                 new Tuple<double, double[]>(1, new double[]{2, 3}),
                 new Tuple<double, double[]>(1, new double[]{3, 3})
             };
+            //plot = new PlotModel { Title = "Wykres" };
 
-            topology = new Topology(2, 1, 0.2, 2);
+            topology = new Topology(2, 1, 0.5, 2);
             network = new Network(topology);
             difference = network.Learn(dataset, 100);
-
-
+            label1.Text = difference.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            difference = network.Learn(dataset, 100);
             label1.Text = difference.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Plot.GeneratePoints(network, dataset);
+            pictureBox.Image = Plot.DrawDecisionBoundary();
         }
     }
 }
