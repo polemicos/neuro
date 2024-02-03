@@ -39,7 +39,7 @@ namespace neuro
             }
         }
 
-        public double feedForward(List<double> inputs) 
+        public double feedForward(List<double> inputs, double bias) 
         {
             for(int i=0; i < inputs.Count; i++)
             {
@@ -49,7 +49,7 @@ namespace neuro
             var sum = 0.0;
             for(int i=0; i< inputs.Count; i++)
             {
-                sum += inputs[i] * weights[i];
+                sum += inputs[i] * weights[i] + bias;
             }
             if (neuronType != neuronType.input)
             {
@@ -65,7 +65,7 @@ namespace neuro
             return res;
         }
 
-        private double sigmoidDx(double x)
+        public static double sigmoidDx(double x)
         {
             var res = sigmoid(x) / (1 - sigmoid(x));
             return res;
@@ -84,6 +84,8 @@ namespace neuro
 
             }
         }
+
+        
 
         public override string ToString()
         {

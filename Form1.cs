@@ -27,7 +27,7 @@ namespace neuro
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //trenujace
             datasets = new List<List<Tuple<double, double[]>>>
             {
                 new List<Tuple<double, double[]>>{
@@ -53,7 +53,44 @@ namespace neuro
                     new Tuple<double, double[]>(1, new double[]{2, 2}),
                     new Tuple<double, double[]>(1, new double[]{1, 5.8}),
                     new Tuple<double, double[]>(1, new double[]{3, 3})
-                } 
+                },
+                new List<Tuple<double, double[]>>{
+                    new Tuple<double, double[]>(0, new double[]{1, 7}),
+                    new Tuple<double, double[]>(0, new double[]{2.6, 9}),
+                    new Tuple<double, double[]>(0, new double[]{3.4, 11.1}),
+                    new Tuple<double, double[]>(0, new double[]{3.7, 7.8}),
+                    new Tuple<double, double[]>(0, new double[]{4, 10}),
+                    new Tuple<double, double[]>(1, new double[]{2, 1.5}),
+                    new Tuple<double, double[]>(1, new double[]{7, 4}),
+                    new Tuple<double, double[]>(1, new double[]{9, 3.5}),
+                    new Tuple<double, double[]>(1, new double[]{3, 4}),
+                    new Tuple<double, double[]>(1, new double[]{2, 5.7})
+                },
+                new List<Tuple<double, double[]>>{
+                    new Tuple<double, double[]>(0, new double[]{1, 2}),
+                    new Tuple<double, double[]>(0, new double[]{3.3, 4}),
+                    new Tuple<double, double[]>(0, new double[]{3.7, 11.1}),
+                    new Tuple<double, double[]>(0, new double[]{2, 10.8}),
+                    new Tuple<double, double[]>(0, new double[]{7, 10}),
+                    new Tuple<double, double[]>(1, new double[]{2, 7.5}),
+                    new Tuple<double, double[]>(1, new double[]{7, 6}),
+                    new Tuple<double, double[]>(1, new double[]{13, 7.2}),
+                    new Tuple<double, double[]>(1, new double[]{3, 6.4 }),
+                    new Tuple<double, double[]>(1, new double[]{1.4, 5.7})
+                },
+                new List<Tuple<double, double[]>>{
+                    new Tuple<double, double[]>(0, new double[]{5, 0.6}),
+                    new Tuple<double, double[]>(0, new double[]{7.3, 4}),
+                    new Tuple<double, double[]>(0, new double[]{4, 4.3}),
+                    new Tuple<double, double[]>(0, new double[]{2, 10.8}),
+                    new Tuple<double, double[]>(0, new double[]{5.5, 5.7}),
+                    new Tuple<double, double[]>(1, new double[]{14, 7.5}),
+                    new Tuple<double, double[]>(1, new double[]{10.4, 4}),
+                    new Tuple<double, double[]>(1, new double[]{13, 3.2}),
+                    new Tuple<double, double[]>(1, new double[]{9.5, 6.4}),
+                    new Tuple<double, double[]>(1, new double[]{17.4, 5.7})
+                }
+
             };
 
             
@@ -62,19 +99,22 @@ namespace neuro
             network = new Network(topology);
             foreach(var dataset in datasets)
             {
-                difference = network.Learn(dataset, 1000);
-                label1.Text = "difference: " + difference.ToString();
+                difference = network.Learn(dataset, 10000);
             }
+            label1.Text = "difference: " + difference.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            difference = network.Learn(datasets[1], 100);
+
+            difference = network.Learn(datasets[4], 10000); 
             label1.Text = "difference: " + difference.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            difference = network.Learn(datasets[0], 10000);
+            label1.Text = "difference: " + difference.ToString();
             Plot.GeneratePoints(network, datasets[0]);
             for (int i = 0; i < 3; i++)
             {
@@ -98,12 +138,6 @@ namespace neuro
                     case 0:
                         chart.Series[2].Points.AddXY(pointValue.X, pointValue.Y);
                         break;
-
-                    // Add more cases if needed
-
-                    default:
-                        // Handle other cases if necessary
-                        break;
                 }
             }
 
@@ -111,7 +145,7 @@ namespace neuro
             //boundary
             foreach (var point in boundary)
             {
-                chart.Series[0].Points.AddXY(point.X, point.Y+10);
+                chart.Series[0].Points.AddXY(point.X, point.Y);
             }
         }
     }

@@ -46,7 +46,7 @@ namespace neuro
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(93, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 0;
@@ -54,7 +54,7 @@ namespace neuro
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 27);
+            this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace neuro
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 56);
+            this.button2.Location = new System.Drawing.Point(12, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
@@ -104,7 +104,7 @@ namespace neuro
             this.chart.Series.Add(series1);
             this.chart.Series.Add(series2);
             this.chart.Series.Add(series3);
-            this.chart.Size = new System.Drawing.Size(885, 416);
+            this.chart.Size = new System.Drawing.Size(1014, 514);
             this.chart.TabIndex = 5;
             this.chart.Text = "chart1";
             // 

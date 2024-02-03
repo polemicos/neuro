@@ -49,6 +49,8 @@ namespace neuro
             {
                 var l = layers[i];
                 var prevL = layers[i + 1];
+                var errBias = prevL.bias * prevL.deltaBias;
+                l.balanceBias(errBias, topology.learningRate);
                 for(int j = 0; j < l.neuronsCount; j++)
                 {
                     var neuron = l.neurons[j];
@@ -85,7 +87,7 @@ namespace neuro
 
                 foreach (var neuron in layer.neurons)
                 {
-                    neuron.feedForward(prevLayerSignals);
+                    neuron.feedForward(prevLayerSignals, layer.bias);
                 }
             }
         }
@@ -97,7 +99,7 @@ namespace neuro
                 var signal = new List<double> { inputSignals[i] };
                 var neuron = layers[0].neurons[i];
 
-                neuron.feedForward(signal);
+                neuron.feedForward(signal, layers[0].bias);
             }
         }
 

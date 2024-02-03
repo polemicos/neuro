@@ -40,7 +40,8 @@ namespace neuro
             for (int layer = 0; layer <= numHiddenLayers; layer++)
             {
                 int numHiddenNeurons = network.layers[layer].neuronsCount;
-                hiddenNeurons[layer] = new List<double>(); // Инициализация списка
+                hiddenNeurons[layer] = new List<double>();
+                var bias = network.layers[layer].bias;
 
                 for (int neuron = 0; neuron < numHiddenNeurons; neuron++)
                 {
@@ -48,8 +49,8 @@ namespace neuro
 
                     for (int weight = 0; weight < hiddenNeuron.weights.Count; weight++)
                     {
-                        double weightedSum = hiddenNeuron.weights[weight] * x1;
-                        if (layer > 1)
+                        double weightedSum = hiddenNeuron.weights[weight] * x1 + bias;
+                        if (layer > 0)
                         {
                             for (int prevNeuron = 0; prevNeuron < numHiddenNeurons; prevNeuron++)
                             {
@@ -62,7 +63,7 @@ namespace neuro
             }
 
             // output
-            double output = network.layers.Last().neurons[0].weights[0] * x1;
+            double output = network.layers.Last().neurons[0].weights[0] * x1 + network.layers.Last().bias;
             for (int i = 1; i < network.layers.Last().neurons[0].weights.Count; i++)
             {
                 output += network.layers.Last().neurons[0].weights[i] * Neuron.sigmoid(hiddenNeurons[numHiddenLayers][i - 1]);
@@ -71,7 +72,7 @@ namespace neuro
             // x2
             double predictedClass = 1.0 / (1.0 + Math.Exp(-output));
 
-            // Пересчет x2
+            // x2
             double x2 = -network.layers[1].neurons[0].weights[0] / network.layers[1].neurons[0].weights[1] * x1 +
                          Math.Log(predictedClass / (1.0 - predictedClass)) / network.layers[1].neurons[0].weights[1];
             return x2;
